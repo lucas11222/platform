@@ -1,85 +1,62 @@
-<p align="center">
-  <img width="192" alt="Lunar Logo" src="./src/assets/bannerLunar.png" />
+# Lunar
+
+<p align="left">
+  <img src="https://res.cloudinary.com/daqmqnfju/image/upload/v1748614325/bannerLunar_hsfo79.png" width="100%></img>
 </p>
 
-<h1 align="center">
-  <a href="https://craftedbylunar.xyz/" target="_blank">Lunar</a>
-</h1>
+Lunar is a developer-first platform offering modern, animated UI components with copy-paste code and clear tutorials, no login or friction required. Built with React, Vite, and GSAP, it's designed to help developers build professional, high-performance sites faster.
 
-<p align="center">
-  <strong>Create websites that inspires, at blazing fast speed.</strong><br/>
-</p>
+Each component is handcrafted and explained in detail so you can drop it into your project and understand how it works. Learn by doing, whether you're building client projects, startup sites, portfolios, or anything in between.
+
+Lunar is open-source and free to use for all core features. Some advanced features may require a premium plan in the future.
 
 ---
 
-## What is Lunar?
+## Features
 
-Lunar is an open-source platform that provides **modern, production-ready UI components** for developers, complete with tutorials and live previews.
+* Copy-paste React components with live previews and tutorials
+* Smooth animations using GSAP
+* Built with developer experience in mind, no setup hassles
+* Clean and customizable code
+* No login or ads
 
-## Run Lunar Locally
+---
 
-Want to explore the code or contribute? Running Lunar locally is simple.
+## Getting Started
 
-### 1. Clone the repository
+Clone and run the project locally:
 
 ```bash
 git clone https://github.com/CraftedByLunar/platform.git
 cd platform
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
-```
-
-### 3. Start the development server
-
-```bash
 npm run dev
 ```
 
-Now open your browser and go to [http://localhost:5173](http://localhost:5173).
+Open [http://localhost:5173](http://localhost:5173) in your browser to start exploring.
 
 ---
 
 ## Tech Stack
 
-Lunar is built using modern, flexible technologies:
+* **React** – for fast, component-based architecture
+* **Vite** – for lightning-fast dev server and builds
+* **GSAP** – for high-performance animations
 
-- [React] – The core of our UI components
-- [Vite] – For super fast experience
-- [GSAP] – For smooth animations
-
----
-
-## Want to Contribute?
-
-We welcome contributors of all levels! You can:
-
-- Submit new components
-- Improve existing ones
-- Report bugs or suggest features
-- Enhance documentation or tutorials
-
-Check out the [`CONTRIBUTING.md`](./CONTRIBUTING.md) (coming soon) for guidelines.
 
 ---
 
-## Visit the Platform
+## Contribute
 
-[craftedbylunar.xyz](https://craftedbylunar.xyz) – Explore components, tutorials, and more.
-
----
-
-## Stay Connected
-
-We're building something exciting here, and it's just getting started. Star the repo to support us and follow along as we grow.
+Found a bug, have a suggestion, or want to add your own components? Contributions are welcome. Open an issue or submit a pull request on [GitHub](https://github.com/CraftedByLunar/platform).
 
 ---
 
-Built with ❤️ using [React] and [GSAP].
+## License
 
-[React]: https://react.dev
-[Vite]: https://vitejs.dev
-[GSAP]: https://gsap.com
+Lunar is open-source under the [MIT License](./LICENSE).
+However, **no part of this software may be resold or used for direct monetary gain** (e.g. selling templates or components). Using it as part of a one-time paid project for a client (like building a website or app) is allowed.
+
+---
+
+**© Copyright Lunar 2025 All rights reserved.**
