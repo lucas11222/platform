@@ -222,15 +222,15 @@
     position: absolute;
     bottom: 50px;
   }
-
-  .text__bottom span {
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 956px) {
   .comp:nth-child(2) {
     display: none;
+  }
+
+  .text__bottom span {
+    font-size: 14px;
   }
 }
 
