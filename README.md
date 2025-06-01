@@ -4,9 +4,6 @@
 
 # Lunar
 
-[![Lunar](https://res.cloudinary.com/daqmqnfju/image/upload/v1748614325/bannerLunar_hsfo79.png)](http://craftedbylunar.xyz)
-
----
 
 Lunar is a developer-first platform offering modern, animated UI components with copy-paste code and clear tutorials, no login or friction required. Built with React, Vite, and GSAP, it's designed to help developers build professional, high-performance sites faster.
 
