@@ -191,7 +191,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid" >
                                 <video
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748596811/Screen_Recording_2025-05-30_144638_fhn9ft.mp4"
+                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748782902/staggeredTextVidDemo_deuudk.mp4"
                                     muted
                                     playsInline
                                 />

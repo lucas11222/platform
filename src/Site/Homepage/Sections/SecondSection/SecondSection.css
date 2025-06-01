@@ -1,0 +1,18 @@
+.main-second-section {
+  height: 100%;
+  width: 100%;
+  min-height: 1000px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondSection {
+  height: 100%;
+  width: 90%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  max-width: 2000px;
+}

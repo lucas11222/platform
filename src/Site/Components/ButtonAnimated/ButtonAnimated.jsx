@@ -40,9 +40,10 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
 
                 gsap.fromTo(
                     duplicate1DivRef.current,
-                    { top: "0%" },
+                    { top: "0%", opacity: 1 },
                     {
                         top: "-100%",
+                        opacity: 0,
                         duration: 0.6,
                         ease: "power4.inOut",
                         stagger: 0.01,
@@ -51,9 +52,10 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
 
                 gsap.fromTo(
                     duplicate2DivRef.current,
-                    { top: "100%" },
+                    { top: "100%", opacity: 0 },
                     {
                         top: "-100%",
+                        opacity: 1,
                         duration: 0.6,
                         ease: "power4.inOut",
                         stagger: 0.01,

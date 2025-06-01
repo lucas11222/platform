@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="192" alt="Lunar Logo" src="./src/assets/bannerLunar.png" />
+  <img width="100%" alt="Lunar Logo" src="./src/assets/bannerLunar.png" />
 </p>
 
 <h1 align="center">
