@@ -166,7 +166,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid">
                                 <video
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748592851/Screen_Recording_2025-05-30_133717_ucfri4.mp4"
+                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/f_auto/v1748592851/Screen_Recording_2025-05-30_133717_ucfri4.mp4"
                                     muted
                                     playsInline
                                 />
@@ -177,7 +177,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid" >
                                 <video
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748594458/Screen_Recording_2025-05-30_140651_px2s3j.mp4"
+                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/f_auto/v1748594458/Screen_Recording_2025-05-30_140651_px2s3j.mp4"
                                     muted
                                     playsInline
                                 />
@@ -188,7 +188,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid">
                                 <video
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748595216/Screen_Recording_2025-05-30_142018_alm58s.mp4"
+                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/f_auto/v1748595216/Screen_Recording_2025-05-30_142018_alm58s.mp4"
                                     muted
                                     playsInline
                                 />
@@ -199,7 +199,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid" >
                                 <video
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748782902/staggeredTextVidDemo_deuudk.mp4"
+                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/f_auto/v1748782902/staggeredTextVidDemo_deuudk.mp4"
                                     muted
                                     playsInline
                                 />
