@@ -98,30 +98,38 @@ export default function FirstSection() {
     }, []);
 
     useEffect(() => {
+        const isMobileOrTablet = window.innerWidth <= 1024;
         const container = containerRef.current;
         const comps = container?.querySelectorAll(".comp");
 
         comps?.forEach((comp) => {
             const video = comp.querySelector("video");
-            if (video) {
-                comp.addEventListener("mouseenter", () => video.play());
-                comp.addEventListener("mouseleave", () => {
+
+            if (!video) return;
+
+            if (isMobileOrTablet) {
+                video.pause();
+                video.currentTime = 0;
+                video.removeAttribute("autoplay");
+                video.removeAttribute("muted");
+                video.removeAttribute("playsinline");
+                video.controls = false;
+            } else {
+                const play = () => video.play();
+                const pause = () => {
                     video.currentTime = 0;
                     video.pause();
-                });
+                };
+
+                comp.addEventListener("mouseenter", play);
+                comp.addEventListener("mouseleave", pause);
+
+                return () => {
+                    comp.removeEventListener("mouseenter", play);
+                    comp.removeEventListener("mouseleave", pause);
+                };
             }
         });
-
-        // Cleanup
-        return () => {
-            comps?.forEach((comp) => {
-                const video = comp.querySelector("video");
-                if (video) {
-                    comp.removeEventListener("mouseenter", () => video.play());
-                    comp.removeEventListener("mouseleave", () => video.pause());
-                }
-            });
-        };
     }, []);
 
     return (

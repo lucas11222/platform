@@ -24,6 +24,24 @@
   flex-direction: column;
 }
 
+.wordFirstMain,
+.wordSecondMain {
+  display: block;
+}
+
+.video-play-btn {
+  position: absolute;
+  bottom: 2px;
+  z-index: 2;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px;
+}
+
 .text__main h1 {
   font-weight: 400;
   line-height: 0.8;
