@@ -23,7 +23,7 @@ function fixMask({ elements, masks }, baseLineHeight = 1.3) {
             lineHeight: baseLineHeight,
             marginTop: isFirst ? `${0.6 * lineHeightDifference}em` : "0",
             marginBottom: isLast
-                ? `${0.6 * lineHeightDifference}em`
+                ? "0em" // No bottom margin on last mask
                 : `${lineHeightDifference}em`,
         });
     });
