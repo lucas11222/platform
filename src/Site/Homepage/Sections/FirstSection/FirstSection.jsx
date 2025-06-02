@@ -34,14 +34,14 @@ export default function FirstSection() {
 
     useEffect(() => {
         const split1 = new SplitText(".text__main h1", {
-            type: "words",
-            mask: "words",
-            wordsClass: "wordFirstMain",
+            type: "lines",
+            mask: "lines",
+            linesClass: "wordFirstMain",
         });
         const split2 = new SplitText(".text__bottom span", {
-            type: "words",
-            mask: "words",
-            wordsClass: "wordSecondMain",
+            type: "lines",
+            mask: "lines",
+            linesClass: "wordSecondMain",
         });
 
         fixMask(split1);
@@ -55,7 +55,7 @@ export default function FirstSection() {
             {
                 y: "0",
                 ease: "smoothEase",
-                stagger: 0.01,
+                stagger: 0.04,
                 duration: 1.4,
             }
         );
