@@ -88,7 +88,7 @@ export default function Navbar() {
                         <LinkText text="Pricing" to="/pricing"></LinkText>
                         <LinkText text="FAQ" to="/faq"></LinkText>
                         <LinkText text="About" to="/about"></LinkText>
-                        <ButtonAnimated borderColor={"black"} text="Get Started" background="#FFFB00" />
+                        <ButtonAnimated borderColor={"black"} textColor={"black"} text="Get Started" background="#FFFB00" />
                     </div>
                 </div>
             </div>
