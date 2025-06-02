@@ -166,6 +166,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid">
                                 <video
+                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115500_vohdy2.png"
                                     src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_133717_video-converter.com_dcv7lu.mp4"
                                     muted
                                     playsInline
@@ -177,6 +178,7 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid" >
                                 <video
+                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115533_lybrlc.png"
                                     src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_140651_video-converter.com_nohfqm.mp4"
                                     muted
                                     playsInline
@@ -188,20 +190,23 @@ export default function FirstSection() {
                         <div className="comp">
                             <div className="vid">
                                 <video
+                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115607_oqt54n.png"
                                     src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_142018_video-converter.com_gq9hjc.mp4"
                                     muted
                                     playsInline
                                 />
                             </div>
-                            <CompDetails text="On-Scroll Image Parallax" />
+                            <CompDetails text="Comic Button" />
                         </div>
 
                         <div className="comp">
                             <div className="vid" >
                                 <video
+                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845852/Screenshot_2025-06-02_115717_qrxbbz.png"
                                     src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/staggeredTextVidDemo_video-converter.com_symtwb.mp4"
                                     muted
                                     playsInline
+
                                 />
                             </div>
                             <CompDetails text="Staggered Text " />
