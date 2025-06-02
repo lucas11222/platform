@@ -150,13 +150,14 @@ export default function FirstSection() {
                         <ButtonAnimated
                             text="Explore Docs →"
                             background="#FFFB00"
+                            textColor={"black"}
                             borderColor="black"
                         />
                         <ButtonAnimated
                             text="About →"
                             background="black"
                             textColor="white"
-                            borderColor="white"
+                            borderColor="black"
                         />
                     </div>
                 </div>

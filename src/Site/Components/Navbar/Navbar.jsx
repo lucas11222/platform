@@ -66,7 +66,7 @@ export default function Navbar() {
                     <Link to="/pricing">Pricing</Link>
                     <Link to="/faq">FAQ</Link>
                     <Link to="/about">About</Link>
-                    <ButtonAnimated background="#FFFB00" text="Jump to Docs →" />
+                    <ButtonAnimated background="#FFFB00" textColor={"black"} borderColor={"black"} text="Jump to Docs →" />
                 </div>
             </div>
 
