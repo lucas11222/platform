@@ -203,6 +203,14 @@
   .text__bottom span {
     font-size: 14px;
   }
+
+  .btns__main {
+    margin-top: 25px;
+  }
+
+  .text__bottom {
+    top: 10px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -228,5 +236,11 @@
 @media (max-width: 751px) {
   .text__main {
     font-size: 1.2em;
+  }
+}
+
+@media (max-height: 963px) {
+  .text__main {
+    width: 100%;
   }
 }

@@ -65,7 +65,7 @@ export default function Navbar() {
                 <div className="wrap1">
                     <Link to="/pricing">Pricing</Link>
                     <Link to="/faq">FAQ</Link>
-                    <Link to="/about">About</Link>
+                    <Link to="/components">Browse Components</Link>
                     <ButtonAnimated background="#FFFB00" textColor={"black"} borderColor={"black"} text="Jump to Docs →" />
                 </div>
             </div>
@@ -77,7 +77,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="group1-nav">
-                        <ButtonAnimated text="Get Started" background="#FFFB00" />
+                        <ButtonAnimated text="Get Started" borderColor={"black"} textColor={"black"} background="#FFFB00" />
                         <div onClick={handleMenuClick} className="button-menu">
                             <div className={isMenuOpen ? "line1 active" : "line1"}></div>
                             <div className={isMenuOpen ? "line2 active" : "line2"}></div>
@@ -86,8 +86,8 @@ export default function Navbar() {
 
                     <div className="navigation">
                         <LinkText text="Pricing" to="/pricing"></LinkText>
+                        <LinkText text="Browse Components" to="/components"></LinkText>
                         <LinkText text="FAQ" to="/faq"></LinkText>
-                        <LinkText text="About" to="/about"></LinkText>
                         <ButtonAnimated borderColor={"black"} textColor={"black"} text="Get Started" background="#FFFB00" />
                     </div>
                 </div>

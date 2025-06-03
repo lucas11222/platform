@@ -5,29 +5,37 @@ import FirstSection from "./Sections/FirstSection/FirstSection";
 import SecondSection from "./Sections/SecondSection/SecondSection";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CustomEase from "gsap/CustomEase";
+import Noise from "../../blocks/Animations/Noise/Noise"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, CustomEase);
 
 export default function Home() {
     const mainRef = useRef(null);
 
+
     useEffect(() => {
-        gsap.to(mainRef.current, {
+
+
+        gsap.fromTo(mainRef.current, {
             backgroundSize: "100% 250%",
-            duration: 1,
-            ease: "power2.out", // Easing included here
-            scrollTrigger: {
-                trigger: mainRef.current,
-                start: "top top",
-                end: "bottom top",
-                scrub: true
-            },
+        }, {
+            backgroundSize: "120% 150%",
+            duration: 2,
+            ease: "power1.inOut", // Easing included here,
+            delay: 0.2
         });
     }, []);
 
     return (
         <>
-            <div className="overlay"></div>
+            <Noise
+                patternSize={400}
+                patternScaleX={1}
+                patternScaleY={1}
+                patternRefreshInterval={2}
+                patternAlpha={20}
+            />
             <div className="main-home-page" ref={mainRef}>
                 <Navbar />
                 <div className="home-page">

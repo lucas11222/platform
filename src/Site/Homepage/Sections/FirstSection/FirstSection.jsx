@@ -23,7 +23,7 @@ function fixMask({ elements, masks }, baseLineHeight = 1.3) {
             lineHeight: baseLineHeight,
             marginTop: isFirst ? `${0.6 * lineHeightDifference}em` : "0",
             marginBottom: isLast
-                ? "0em" // No bottom margin on last mask
+                ? "0em"
                 : `${lineHeightDifference}em`,
         });
     });
@@ -31,23 +31,30 @@ function fixMask({ elements, masks }, baseLineHeight = 1.3) {
 
 export default function FirstSection() {
     const containerRef = useRef(null);
+    const split1Ref = useRef(null);
+    const split2Ref = useRef(null);
 
-    useEffect(() => {
-        const split1 = new SplitText(".text__main h1", {
+    const runAnimations = () => {
+        gsap.killTweensOf(".text__main h1, .text__bottom span");
+        gsap.killTweensOf(".wordFirstMain, .wordSecondMain");
+
+        if (split1Ref.current) split1Ref.current.revert();
+        if (split2Ref.current) split2Ref.current.revert();
+
+        split1Ref.current = new SplitText(".text__main h1", {
             type: "lines",
             mask: "lines",
             linesClass: "wordFirstMain",
         });
-        const split2 = new SplitText(".text__bottom span", {
+
+        split2Ref.current = new SplitText(".text__bottom span", {
             type: "lines",
             mask: "lines",
             linesClass: "wordSecondMain",
         });
 
-        fixMask(split1);
-        fixMask(split2);
-
-        CustomEase.create("smoothEase", "0.87, 0, 0.13, 1");
+        fixMask(split1Ref.current);
+        fixMask(split2Ref.current);
 
         gsap.fromTo(
             ".wordFirstMain",
@@ -95,6 +102,24 @@ export default function FirstSection() {
                 delay: 2,
             }
         );
+    };
+
+    useEffect(() => {
+        CustomEase.create("smoothEase", "0.87, 0, 0.13, 1");
+
+        runAnimations();
+
+        const handleResize = () => {
+            runAnimations();
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            if (split1Ref.current) split1Ref.current.revert();
+            if (split2Ref.current) split2Ref.current.revert();
+        };
     }, []);
 
     useEffect(() => {
@@ -104,7 +129,6 @@ export default function FirstSection() {
 
         comps?.forEach((comp) => {
             const video = comp.querySelector("video");
-
             if (!video) return;
 
             if (isMobileOrTablet) {
@@ -137,7 +161,6 @@ export default function FirstSection() {
             <div className="firstSection">
                 <div className="text__main">
                     <h1>Create websites that inspires, at blazing fast speed.</h1>
-
                     <div className="text__bottom">
                         <span>
                             Lunar gives you ready-to-use components paired with
@@ -154,7 +177,7 @@ export default function FirstSection() {
                             borderColor="black"
                         />
                         <ButtonAnimated
-                            text="About →"
+                            text="Browse Components →"
                             background="black"
                             textColor="white"
                             borderColor="black"
@@ -164,54 +187,48 @@ export default function FirstSection() {
 
                 <div className="comp__prev" ref={containerRef}>
                     <div className="wrapppp">
-                        <div className="comp">
-                            <div className="vid">
-                                <video
-                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115500_vohdy2.png"
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_133717_video-converter.com_dcv7lu.mp4"
-                                    muted
-                                    playsInline
-                                />
+                        {[
+                            {
+                                text: "Bottom Nav Bar",
+                                poster:
+                                    "https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115500_vohdy2.png",
+                                src:
+                                    "https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_133717_video-converter.com_dcv7lu.mp4",
+                            },
+                            {
+                                text: "Link Text",
+                                poster:
+                                    "https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115533_lybrlc.png",
+                                src:
+                                    "https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_140651_video-converter.com_nohfqm.mp4",
+                            },
+                            {
+                                text: "Comic Button",
+                                poster:
+                                    "https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115607_oqt54n.png",
+                                src:
+                                    "https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_142018_video-converter.com_gq9hjc.mp4",
+                            },
+                            {
+                                text: "Staggered Text",
+                                poster:
+                                    "https://res.cloudinary.com/daqmqnfju/image/upload/v1748845852/Screenshot_2025-06-02_115717_qrxbbz.png",
+                                src:
+                                    "https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/staggeredTextVidDemo_video-converter.com_symtwb.mp4",
+                            },
+                        ].map((comp, index) => (
+                            <div className="comp" key={index}>
+                                <div className="vid">
+                                    <video
+                                        poster={comp.poster}
+                                        src={comp.src}
+                                        muted
+                                        playsInline
+                                    />
+                                </div>
+                                <CompDetails text={comp.text} />
                             </div>
-                            <CompDetails text="Bottom Nav Bar" />
-                        </div>
-
-                        <div className="comp">
-                            <div className="vid" >
-                                <video
-                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115533_lybrlc.png"
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_140651_video-converter.com_nohfqm.mp4"
-                                    muted
-                                    playsInline
-                                />
-                            </div>
-                            <CompDetails text="Link Text" />
-                        </div>
-
-                        <div className="comp">
-                            <div className="vid">
-                                <video
-                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845851/Screenshot_2025-06-02_115607_oqt54n.png"
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/Screen_Recording_2025-05-30_142018_video-converter.com_gq9hjc.mp4"
-                                    muted
-                                    playsInline
-                                />
-                            </div>
-                            <CompDetails text="Comic Button" />
-                        </div>
-
-                        <div className="comp">
-                            <div className="vid" >
-                                <video
-                                    poster="https://res.cloudinary.com/daqmqnfju/image/upload/v1748845852/Screenshot_2025-06-02_115717_qrxbbz.png"
-                                    src="https://res.cloudinary.com/daqmqnfju/video/upload/v1748844305/staggeredTextVidDemo_video-converter.com_symtwb.mp4"
-                                    muted
-                                    playsInline
-
-                                />
-                            </div>
-                            <CompDetails text="Staggered Text " />
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -236,9 +253,7 @@ function CompDetails({ text }) {
                     >
                         <path
                             fill="currentColor"
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M5.50001 1.93933L6.03034 2.46966L10.8536 7.29288C11.2441 7.68341 11.2441 8.31657 10.8536 8.7071L6.03034 13.5303L5.50001 14.0607L4.43935 13L4.96968 12.4697L9.43935 7.99999L4.96968 3.53032L4.43935 2.99999L5.50001 1.93933Z"
+                            d="M5.5 1.94l.53.53 4.82 4.82a1 1 0 010 1.41L6.03 13.53l-.53.53L4.47 13l4.82-4.82L4.47 3.35l1.03-1.41z"
                         />
                     </svg>
                 </button>
