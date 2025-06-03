@@ -134,16 +134,6 @@
     align-items: center;
   }
 
-  .group1-nav button {
-    font-size: 12px;
-    padding: 5px 20px;
-    height: 40px;
-  }
-
-  .group1-nav button div {
-    height: 15px;
-  }
-
   .navigation {
     display: none;
   }

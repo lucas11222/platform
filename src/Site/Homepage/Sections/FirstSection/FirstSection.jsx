@@ -109,8 +109,14 @@ export default function FirstSection() {
 
         runAnimations();
 
+        const prevWidthRef = { current: window.innerWidth };
+
         const handleResize = () => {
-            runAnimations();
+            const newWidth = window.innerWidth;
+            if (newWidth !== prevWidthRef.current) {
+                prevWidthRef.current = newWidth;
+                runAnimations();
+            }
         };
 
         window.addEventListener("resize", handleResize);
@@ -121,6 +127,7 @@ export default function FirstSection() {
             if (split2Ref.current) split2Ref.current.revert();
         };
     }, []);
+
 
     useEffect(() => {
         const isMobileOrTablet = window.innerWidth <= 1024;
