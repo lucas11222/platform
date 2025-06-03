@@ -13,6 +13,13 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
     const duplicate2DivRef = useRef(null);
 
     useEffect(() => {
+        if (window.innerWidth <= 1000) {
+            const height = dup1Ref.current.offsetHeight;
+            dup1Ref.current.parentElement.style.height = (height + 2) + "px";
+        }
+    }, []);
+
+    useEffect(() => {
         const split1 = new SplitText("#dup1", {
             type: "words",
             wordsClass: "dup1char",
@@ -27,6 +34,8 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
 
         // Setup GSAP matchMedia
         const mm = gsap.matchMedia();
+
+
 
         mm.add("(hover: hover) and (pointer: fine)", () => {
             // Only add hover event on devices that support hover (desktop)
