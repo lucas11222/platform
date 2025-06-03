@@ -4,7 +4,6 @@ import Layout from "./Layout";
 import "./App.css";
 import ReactLenis, { useLenis } from "lenis/react";
 import Home from "./Site/Homepage/Home";
-import About from "./Site/AboutPage/About";
 
 // Lazy load app pages
 const StartingPage = lazy(() => import("./Pages/StartingPage/StartingPage"));
@@ -49,7 +48,7 @@ function App() {
           <Routes>
             {/* Landing Pages without Layout */}
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} /> */}
 
             {/* Pages with Sidebar Layout */}
             <Route path="/app" element={<Layout />}>
