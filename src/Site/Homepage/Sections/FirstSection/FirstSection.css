@@ -47,10 +47,11 @@
   line-height: 1;
   width: 80%;
   letter-spacing: -0.04em;
+  font-size: clamp(26px, 5vw, 80px);
 }
 
 .text__bottom {
-  max-width: 1000px;
+  max-width: 900px;
   position: relative;
   top: 25px;
   line-height: 0.3;
@@ -59,6 +60,7 @@
 .text__bottom span {
   font-size: 20px;
   font-family: "Satoshi", sans-serif;
+  font-size: clamp(13px, 1.2vw, 25px);
   letter-spacing: -0.02em;
   line-height: 1;
   font-weight: 400;
@@ -160,11 +162,13 @@
   color: white;
 }
 
-@media (max-width: 1064px) {
-  .text__main {
-    font-size: 1.5em;
+@media (max-width: 1200px) {
+  .text__bottom {
+    max-width: 500px;
   }
+}
 
+@media (max-width: 1064px) {
   .text__main h1 {
     line-height: 1;
   }
@@ -200,10 +204,6 @@
     display: none;
   }
 
-  .text__bottom span {
-    font-size: 14px;
-  }
-
   .btns__main {
     margin-top: 25px;
   }
@@ -215,7 +215,6 @@
 
 @media (max-width: 520px) {
   .text__main h1 {
-    font-size: 1.5em;
     width: 100%;
   }
 
@@ -230,12 +229,6 @@
   .comp__prev {
     height: 225px;
     min-height: 220px;
-  }
-}
-
-@media (max-width: 751px) {
-  .text__main {
-    font-size: 1.2em;
   }
 }
 

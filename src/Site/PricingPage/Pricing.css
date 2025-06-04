@@ -1,0 +1,28 @@
+.main-pricing-page {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    -290deg,
+    #fffb00 0%,
+    /* yellow start */ #fffb00 5%,
+    /* yellow to blend till 25% */ #f1f1f1 20%,
+    /* gray start blending in at 25-40% */ #f1f1f1 60%,
+    /* gray takes most space till 60% */ #fffb00 105%,
+    /* yellow starts blending back at 60-75% */ #fffb00 50% /* yellow end */
+  );
+  background-size: 120% 150%;
+  min-height: 900px;
+}
+
+.pricing-page {
+  width: 100%;
+}
+
+@media (max-width: 520px) {
+  .main-pricing-page {
+    min-height: 800px;
+  }
+}

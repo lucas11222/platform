@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap");
 
 html,
 body,
@@ -52,6 +52,7 @@ u {
   --white: #ffffff;
   --white-dif: #f4f5f6;
   --yellow: #fff200;
+  --golden: #e4d800e8;
   --yellow-dif: #f7ec29;
   --yellow-light: #fcf794;
   --borderColorWhite: #cdcdcd;

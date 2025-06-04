@@ -73,7 +73,7 @@ export default function Navbar() {
             <div className="main-navbar">
                 <div className="navbar">
                     <div className="logoLeft">
-                        <img src={Logo} alt="Logo" />
+                        <Link to={"/"}><img src={Logo} alt="Logo" /></Link>
                     </div>
 
                     <div className="group1-nav">
@@ -91,7 +91,7 @@ export default function Navbar() {
                         <ButtonAnimated borderColor={"black"} textColor={"black"} text="Get Started" background="#FFFB00" />
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

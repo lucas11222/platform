@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import "./App.css";
 import ReactLenis, { useLenis } from "lenis/react";
 import Home from "./Site/Homepage/Home";
+import Pricing from "./Site/PricingPage/Pricing"
 
 // Lazy load app pages
 const StartingPage = lazy(() => import("./Pages/StartingPage/StartingPage"));
@@ -48,7 +49,13 @@ function App() {
           <Routes>
             {/* Landing Pages without Layout */}
             <Route path="/" element={<Home />} />
-            {/* <Route path="/about" element={<About />} /> */}
+            <Route path="/pricing" element={<Pricing />}></Route>
+
+
+            {/* Typo Redirect */}
+            <Route path="/intro" element={<Navigate to="/app/intro" />} />
+
+            {/* <Route path="/about" element={<About />} /> */}~
 
             {/* Pages with Sidebar Layout */}
             <Route path="/app" element={<Layout />}>
@@ -57,6 +64,11 @@ function App() {
               <Route path="link-text" element={<LinkTextPage />} />
               <Route path="bottom-nav" element={<BotomNavPage />} />
               <Route path="terms" element={<Terms />} />
+            </Route>
+
+            {/* Redirect Pages */}
+            <Route path="/redirect" element={<Layout />}>
+              <Route path="github" element={<ExternalRedirect url={"https://github.com/CraftedByLunar/platform"} />} />
             </Route>
 
             {/* 404 Page */}

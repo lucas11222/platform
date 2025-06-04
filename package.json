@@ -28,6 +28,7 @@
     "react-markdown": "^10.0.0",
     "react-router-dom": "^7.2.0",
     "react-syntax-highlighter": "^15.6.1",
+    "react-transition-group": "^4.4.5",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
     "three": "^0.177.0"
