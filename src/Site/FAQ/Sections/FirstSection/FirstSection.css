@@ -1,0 +1,57 @@
+.main-first-section-faq {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.first-section-faq {
+  height: 100%;
+  width: 90%;
+  max-width: 2000px;
+  position: relative;
+}
+
+.smallText3 {
+  font-size: 15px;
+  color: gray;
+  font-family: "Geist Mono", monospace;
+  letter-spacing: -0.04em;
+}
+
+.topLeftFaq {
+  width: 100%;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Geist", sans-serif;
+  gap: 10px;
+}
+
+.topLeftFaq h1 {
+  font-weight: 400;
+  line-height: 1;
+  width: 50%;
+  font-size: clamp(26px, 5vw, 80px);
+  letter-spacing: -0.04em;
+  word-break: break-word;
+}
+
+.bottomText2 {
+  width: 40%;
+  font-size: clamp(11px, 1.2vw, 25px);
+  font-family: "Satoshi", sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.btn__faq__top {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}

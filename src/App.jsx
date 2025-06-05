@@ -5,6 +5,7 @@ import "./App.css";
 import ReactLenis, { useLenis } from "lenis/react";
 import Home from "./Site/Homepage/Home";
 import Pricing from "./Site/PricingPage/Pricing"
+import FAQ from "./Site/FAQ/FAQ"
 
 // Lazy load app pages
 const StartingPage = lazy(() => import("./Pages/StartingPage/StartingPage"));
@@ -50,6 +51,7 @@ function App() {
             {/* Landing Pages without Layout */}
             <Route path="/" element={<Home />} />
             <Route path="/pricing" element={<Pricing />}></Route>
+            <Route path="/faq" element={<FAQ />}></Route>
 
 
             {/* Typo Redirect */}

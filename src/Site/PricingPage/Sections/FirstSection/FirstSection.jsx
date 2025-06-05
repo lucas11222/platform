@@ -159,7 +159,7 @@ export default function FirstSection() {
                         </div>
                         <div className="divider"></div>
                         <div className="price">
-                            <h1>$25<span className="per">/mo</span></h1>
+                            <h1>$25<span className="per">/mo</span><div className="smallText3"><span>*Excl. taxes</span></div></h1>
                         </div>
                         <div className="divider"></div>
                         <div className="headingPricingCard">
