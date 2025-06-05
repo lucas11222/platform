@@ -148,8 +148,8 @@ export default function FirstSection() {
                         <span>If you want access to <strong>premium components</strong> that are closed-source and professionally handcrafted, you can upgrade to Lunar+. As a Lunar+ user, you&lsquo;ll get access to our exclusive component marketplace, filled with high-quality resources made by experienced developers.</span>
                     </div>
                     <div className="btn__pricing__top">
-                        <ButtonAnimated text={"Get Started →"} textColor={"white"} background={"black"} borderColor={"black"}></ButtonAnimated>
-                        <ButtonAnimated text={"Permissions →"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
+                        <ButtonAnimated onClick={() => { window.location.replace("/app") }} text={"Get Started →"} textColor={"white"} background={"black"} borderColor={"black"}></ButtonAnimated>
+                        <ButtonAnimated onClick={() => { window.location.replace("/app/terms") }} text={"Permissions →"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
                     </div>
                 </div>
                 <div className="cards">
@@ -176,7 +176,7 @@ export default function FirstSection() {
                             </ul>
                         </div>
                         <div className="btn-pricing">
-                            <ButtonAnimated text={"Buy Now"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
+                            <ButtonAnimated onClick={() => { window.location.replace("/app") }} text={"Buy Now"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
                         </div>
                     </div>
 
@@ -200,7 +200,7 @@ export default function FirstSection() {
                             </ul>
                         </div>
                         <div className="btn-pricing">
-                            <ButtonAnimated text={"Get Started"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
+                            <ButtonAnimated onClick={() => { window.location.replace("/app") }} text={"Get Started"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
                         </div>
                     </div>
                 </div>

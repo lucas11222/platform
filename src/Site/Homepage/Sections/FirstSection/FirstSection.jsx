@@ -178,12 +178,14 @@ export default function FirstSection() {
 
                     <div className="btns__main">
                         <ButtonAnimated
+                            onClick={() => { window.location.replace("/app") }}
                             text="Explore Docs →"
                             background="#FFFB00"
                             textColor={"black"}
                             borderColor="black"
                         />
                         <ButtonAnimated
+                            onClick={() => { window.location.replace("/app") }}
                             text="Browse Components →"
                             background="black"
                             textColor="white"

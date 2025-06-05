@@ -128,8 +128,8 @@ export default function FirstSection() {
                         <span>Get clear, concise answers to help you better understand how Lunar works and what it offers.</span>
                     </div>
                     <div className="btn__faq__top">
-                        <ButtonAnimated text={"Get Started →"} textColor={"white"} background={"black"} borderColor={"black"}></ButtonAnimated>
-                        <ButtonAnimated text={"Permissions →"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
+                        <ButtonAnimated onClick={() => { window.location.replace("/app") }} text={"Get Started →"} textColor={"white"} background={"black"} borderColor={"black"}></ButtonAnimated>
+                        <ButtonAnimated onClick={() => { window.location.replace("/app/terms") }} text={"Permissions →"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
                     </div>
                 </div>
                 <div className="faq-list">
