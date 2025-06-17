@@ -10,18 +10,22 @@
   width: 90%;
   max-width: 2000px;
   position: relative;
+  display: flex;
+
+  flex-direction: row;
 }
 
 .smallText3 {
-  font-size: 15px;
+  font-size: clamp(10px, 1vw, 25px);
   color: gray;
   font-family: "Geist Mono", monospace;
   letter-spacing: -0.04em;
 }
 
 .topLeftFaq {
-  width: 100%;
-  min-height: 700px;
+  width: 60%;
+  height: 70vh;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,15 +37,15 @@
 .topLeftFaq h1 {
   font-weight: 400;
   line-height: 1;
-  width: 50%;
-  font-size: clamp(26px, 5vw, 80px);
+  width: 90%;
+  font-size: clamp(40px, 5vw, 110px);
   letter-spacing: -0.04em;
   word-break: break-word;
 }
 
 .bottomText2 {
-  width: 40%;
-  font-size: clamp(11px, 1.2vw, 25px);
+  width: 70%;
+  font-size: clamp(15px, 1.2vw, 35px);
   font-family: "Satoshi", sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -54,4 +58,113 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.faq-list {
+  width: 100%;
+  height: 70%;
+  min-height: 750px;
+  overflow: auto;
+  padding: 20px;
+  position: absolute;
+  max-width: 500px;
+  right: 0;
+}
+
+.faq {
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.question-box {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.question-box h2 {
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.plus {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.line1-plus,
+.line2-plus {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+}
+
+.line2-plus {
+  transform: rotate(-90deg);
+}
+
+.faq-list-wrapper {
+  width: 40%;
+  height: 70vh;
+  min-height: 900px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  position: relative;
+  align-items: end;
+}
+
+@media (min-height: 976px) {
+  .topLeftFaq {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .first-section-faq {
+    flex-direction: column;
+  }
+
+  .faq-list-wrapper {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    width: 80%;
+  }
+
+  .topLeftFaq {
+    width: 100%;
+    position: relative;
+    top: -100px;
+  }
+
+  .topLeftFaq h1 {
+    width: 100%;
+  }
+
+  .bottomText2 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 744px) {
+  .bottomText2 {
+    width: 90%;
+  }
+}
+
+@media (max-width: 602px) {
+  .topLeftFaq {
+    width: 100%;
+  }
 }

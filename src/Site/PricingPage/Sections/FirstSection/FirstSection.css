@@ -36,6 +36,7 @@
   color: gray;
   font-family: "Geist Mono", monospace;
   letter-spacing: -0.04em;
+  font-size: clamp(15px, 1vw, 25px);
 }
 .smallText2 span {
   font-size: 15px;

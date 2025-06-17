@@ -14,19 +14,22 @@ const BotomNavPage = lazy(() => import("./Pages/BottomNav/BottomNavPage"));
 const NotFound = lazy(() => import("./Pages/404/404"));
 const Terms = lazy(() => import("./Pages/Terms/Terms"));
 
-
-// ScrollToTop and refresh Lenis scroll after DOM updates
 function ScrollToTopAndRefreshLenis() {
   const location = useLocation();
   const lenis = useLenis();
 
   useEffect(() => {
-    if (lenis) {
+    if (!lenis) return;
+
+    // Delay to ensure content has loaded
+    requestAnimationFrame(() => {
       lenis.scrollTo(0, { immediate: true });
+
+      // Delay resize to ensure layout is measured after render
       setTimeout(() => {
         lenis.resize();
-      }, 100);
-    }
+      }, 200); // 100–300ms is usually enough
+    });
   }, [location.pathname, lenis]);
 
   return null;
@@ -43,15 +46,15 @@ function ExternalRedirect({ url }) {
 
 function App() {
   return (
-    <ReactLenis root>
+    <ReactLenis root options={{ touchSync: true }}>
       <BrowserRouter>
         <ScrollToTopAndRefreshLenis />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             {/* Landing Pages without Layout */}
             <Route path="/" element={<Home />} />
-            <Route path="/pricing" element={<Pricing />}></Route>
-            <Route path="/faq" element={<FAQ />}></Route>
+            {/* <Route path="/pricing" element={<Pricing />}></Route>
+            <Route path="/faq" element={<FAQ />}></Route> */}
 
 
             {/* Typo Redirect */}

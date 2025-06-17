@@ -116,6 +116,31 @@ export default function FirstSection() {
         };
     }, []);
 
+    const faqAnimationIn = () => {
+        gsap.to(".line2-plus", {
+            rotate: "90deg",
+            ease: "smoothEase",
+            duration: 1,
+        })
+        gsap.to(".plus", {
+            scale: 0.94,
+            ease: "smoothEase",
+            duration: 1,
+        })
+    }
+    const faqAnimationOut = () => {
+        gsap.to(".line2-plus", {
+            rotate: "-90deg",
+            ease: "smoothEase",
+            duration: 1,
+        })
+        gsap.to(".plus", {
+            scale: 1,
+            ease: "smoothEase",
+            duration: 1,
+        })
+    }
+
     return (
         <div className="main-first-section-faq">
             <div className="first-section-faq">
@@ -132,7 +157,21 @@ export default function FirstSection() {
                         <ButtonAnimated onClick={() => { window.location.replace("/app/terms") }} text={"Permissions →"} textColor={"black"} background={"#FFFB00"} borderColor={"black"}></ButtonAnimated>
                     </div>
                 </div>
-                <div className="faq-list">
+                <div className="faq-list-wrapper">
+                    <div className="faq-list">
+                        <div onMouseEnter={faqAnimationIn} onMouseLeave={faqAnimationOut} className="faq">
+                            <div className="question-box">
+                                <h2>What is Lunar?</h2>
+                                <div className="plus">
+                                    <div className="line1-plus"></div>
+                                    <div className="line2-plus"></div>
+                                </div>
+                            </div>
+                            <div className="answer-box">
+                                <span>Lunar is a free, open-source platform that provides developers with beautifully crafted UI components, complete with live previews and tutorials in React + GSAP and HTML, CSS, and JavaScript.</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

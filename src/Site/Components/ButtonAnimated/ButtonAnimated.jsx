@@ -32,18 +32,13 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
         duplicate1DivRef.current = dup1Ref.current.querySelectorAll("div");
         duplicate2DivRef.current = dup2Ref.current.querySelectorAll("div");
 
-        // Setup GSAP matchMedia
+
         const mm = gsap.matchMedia();
 
-
-
         mm.add("(hover: hover) and (pointer: fine)", () => {
-            // Only add hover event on devices that support hover (desktop)
             const button = dup1Ref.current.closest("button");
-
             if (!button) return;
 
-            // Define slideUp function here to access refs properly
             const slideUp = () => {
                 if (!duplicate1DivRef.current || !duplicate2DivRef.current) return;
 
@@ -75,13 +70,12 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
             button.addEventListener("mouseenter", slideUp);
 
             return () => {
-                // Cleanup listener on unmount or media query change
                 button.removeEventListener("mouseenter", slideUp);
             };
         });
 
         return () => {
-            mm.revert(); // Clean up matchMedia listeners on component unmount
+            mm.revert();
         };
     }, []);
 

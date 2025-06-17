@@ -47,7 +47,7 @@
   line-height: 1;
   width: 80%;
   letter-spacing: -0.04em;
-  font-size: clamp(26px, 5vw, 80px);
+  font-size: clamp(26px, 5vw, 110px);
 }
 
 .text__bottom {
@@ -58,11 +58,10 @@
 }
 
 .text__bottom span {
-  font-size: 20px;
   font-family: "Satoshi", sans-serif;
-  font-size: clamp(13px, 1.2vw, 25px);
+  font-size: clamp(11px, 1.2vw, 35px);
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.2;
   font-weight: 400;
 }
 
@@ -235,5 +234,11 @@
 @media (max-height: 963px) {
   .text__main {
     width: 100%;
+  }
+}
+
+@media (min-width: 1976px) {
+  .text__bottom {
+    max-width: 1500px;
   }
 }

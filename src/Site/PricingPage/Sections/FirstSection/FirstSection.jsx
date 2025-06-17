@@ -155,7 +155,7 @@ export default function FirstSection() {
                 <div className="cards">
                     <div className="pricingCardPaid">
                         <div className="smallText2">
-                            <span>Lunar<span className="plus">+</span></span>
+                            <span>Lunar<span className="plus-icon">+</span></span>
                         </div>
                         <div className="divider"></div>
                         <div className="price">
