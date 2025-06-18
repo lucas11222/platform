@@ -1,11 +1,17 @@
 import React, { Suspense, lazy, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import Layout from "./Layout";
 import "./App.css";
 import ReactLenis, { useLenis } from "lenis/react";
 import Home from "./Site/Homepage/Home";
-import Pricing from "./Site/PricingPage/Pricing"
-import FAQ from "./Site/FAQ/FAQ"
+import Pricing from "./Site/PricingPage/Pricing";
+import FAQ from "./Site/FAQ/FAQ";
 
 // Lazy load app pages
 const StartingPage = lazy(() => import("./Pages/StartingPage/StartingPage"));
@@ -21,21 +27,17 @@ function ScrollToTopAndRefreshLenis() {
   useEffect(() => {
     if (!lenis) return;
 
-    // Delay to ensure content has loaded
     requestAnimationFrame(() => {
       lenis.scrollTo(0, { immediate: true });
-
-      // Delay resize to ensure layout is measured after render
       setTimeout(() => {
         lenis.resize();
-      }, 200); // 100–300ms is usually enough
+      }, 200);
     });
   }, [location.pathname, lenis]);
 
   return null;
 }
 
-// Inline external redirect component
 function ExternalRedirect({ url }) {
   useEffect(() => {
     window.location.href = url;
@@ -44,25 +46,37 @@ function ExternalRedirect({ url }) {
   return <p>Redirecting...</p>;
 }
 
-function App() {
+function ConditionalLenisWrapper({ children }) {
+  const location = useLocation();
+  const isAppRoute = location.pathname.startsWith("/app");
+
+  if (isAppRoute) {
+    return children;
+  }
+
   return (
     <ReactLenis root options={{ touchSync: true }}>
-      <BrowserRouter>
-        <ScrollToTopAndRefreshLenis />
+      <ScrollToTopAndRefreshLenis />
+      {children}
+    </ReactLenis>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <ConditionalLenisWrapper>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            {/* Landing Pages without Layout */}
+            {/* Landing Pages */}
             <Route path="/" element={<Home />} />
-            {/* <Route path="/pricing" element={<Pricing />}></Route>
-            <Route path="/faq" element={<FAQ />}></Route> */}
-
+            {/* <Route path="/pricing" element={<Pricing />} />
+            <Route path="/faq" element={<FAQ />} /> */}
 
             {/* Typo Redirect */}
             <Route path="/intro" element={<Navigate to="/app/intro" />} />
 
-            {/* <Route path="/about" element={<About />} /> */}~
-
-            {/* Pages with Sidebar Layout */}
+            {/* App pages with Layout no lenis*/}
             <Route path="/app" element={<Layout />}>
               <Route index element={<Navigate to="/app/intro" />} />
               <Route path="intro" element={<StartingPage />} />
@@ -71,18 +85,22 @@ function App() {
               <Route path="terms" element={<Terms />} />
             </Route>
 
-            {/* Redirect Pages */}
+            {/* external redirects */}
             <Route path="/redirect" element={<Layout />}>
-              <Route path="github" element={<ExternalRedirect url={"https://github.com/CraftedByLunar/platform"} />} />
+              <Route
+                path="github"
+                element={
+                  <ExternalRedirect url="https://github.com/CraftedByLunar/platform" />
+                }
+              />
             </Route>
 
-            {/* 404 Page */}
+            {/* 404 page */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
-    </ReactLenis>
-
+      </ConditionalLenisWrapper>
+    </BrowserRouter>
   );
 }
 
