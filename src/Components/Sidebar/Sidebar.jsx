@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import logo from "../../assets/Logos/logoYellowTransparent.svg";
 import { Link, useLocation } from "react-router-dom";
 import closeIcon from "../../assets/x.svg";
@@ -17,43 +17,89 @@ export const navItems = [
     {
         category: "Text Animations",
         className: "category",
-        links: [
-            { name: "Link Text", path: "/app/link-text" },
-        ],
+        links: [{ name: "Link Text", path: "/app/link-text" }],
     },
     {
         category: "Navigation",
         className: "nav-igation",
-        links: [
-            { name: "Bottom Bar", path: "/app/bottom-nav" },
-        ],
+        links: [{ name: "Bottom Bar", path: "/app/bottom-nav" }],
     },
 ];
 
 export default function Sidebar() {
     const location = useLocation();
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMobile, setIsMobile] = useState(false);
+    const [query, setQuery] = useState("");
+    const searchBoxRef = useRef(null);
+    const searchOverlayRef = useRef(null);
+    const searchTimeline = useRef(null);
+    const searchInputRef = useRef(null);
+
+    const filteredResults = navItems
+        .flatMap(section => section.links)
+        .filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+
+
 
     const updateScreenState = () => {
         if (window.innerWidth < 948) {
-            gsap.set(".logoTop", { top: "-100%" }); // Hide logoTop on initial render if width < 948
-            gsap.set(".main-sidebar", { left: "-100%", duration: 0.6, ease: "power4.inOut" })
-            setIsMobile(true)
+            gsap.set(".logoTop", { top: "-100%" });
+            gsap.set(".main-sidebar", { left: "-100%", duration: 0.6, ease: "power4.inOut" });
+            setIsMobile(true);
+        } else {
+            gsap.set(".logoTop", { top: "0" });
+            gsap.set(".main-sidebar", { left: 0, duration: 0.6, ease: "power4.inOut" });
+            setIsMobile(false);
         }
-        else {
-            gsap.set(".logoTop", { top: "0" }); // unhide logoTop on initial render if width < 948
-            gsap.set(".main-sidebar", { left: 0, duration: 0.6, ease: "power4.inOut" })
-            setIsMobile(false)
-        }
-    }
+    };
 
     useEffect(() => {
+        updateScreenState();
+        window.addEventListener("resize", updateScreenState);
 
-        updateScreenState()
+        searchTimeline.current = gsap.timeline({
+            paused: true,
+            onStart: () => {
+                setTimeout(() => {
+                    searchInputRef.current?.focus();
+                }, 0);
+            },
+            onReverseComplete: () => {
+                setQuery("");
+            },
+        });
 
-        window.addEventListener("resize", () => {
-            updateScreenState()
-        })
+        searchTimeline.current.to(".main-search-box", { zIndex: "1000000", opacity: 1, duration: 0.2, ease: "power2", pointerEvents: "auto" });
+        searchTimeline.current.to(".search-box", { opacity: 1, duration: 0.2, ease: "power2" }, "-=0.2");
+
+        const handleKeyDown = (e) => {
+            if (e.ctrlKey && e.key === "k") {
+                e.preventDefault();
+                searchTimeline.current.play();
+            } else if (e.key === "Escape") {
+                searchTimeline.current.reverse();
+            }
+        };
+
+        const handleClickOutside = (e) => {
+            if (
+                searchBoxRef.current &&
+                !searchBoxRef.current.contains(e.target) &&
+                searchOverlayRef.current &&
+                searchOverlayRef.current.contains(e.target)
+            ) {
+                searchTimeline.current.reverse();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            window.removeEventListener("resize", updateScreenState);
+            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
     }, []);
 
     const openMenu = () => {
@@ -62,8 +108,6 @@ export default function Sidebar() {
             gsap.to(".logoTop", { top: 0, duration: 0.6, ease: "power4.inOut" });
             gsap.to(".main-docs", { opacity: 0.2, duration: 0.6, ease: "power4.inOut" });
         }
-
-
     };
 
     const closeMenu = () => {
@@ -76,7 +120,6 @@ export default function Sidebar() {
 
     return (
         <>
-            {/* Navigation For Mobile */}
             <div className="nav-mobile">
                 <div className="logo-mobile">
                     <img src={logo} alt="Logo" />
@@ -85,13 +128,76 @@ export default function Sidebar() {
                     <img src={menuIcon} alt="Menu" />
                 </div>
             </div>
-            {/* Sidebar Parent Div */}
+
+            <div className="main-search-box" ref={searchOverlayRef}>
+                <div className="search-box" ref={searchBoxRef}>
+                    <div className="input-search">
+                        <img src={searchIcon} alt="Search Icon" />
+                        <input
+                            ref={searchInputRef}
+                            type="text"
+                            placeholder="Search for components"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" && query !== "" && filteredResults.length > 0) {
+                                    e.preventDefault();
+                                    const firstResult = document.querySelector('.search-result-item');
+                                    if (firstResult) {
+                                        firstResult.click();
+                                    }
+                                }
+                            }}
+                        />
+                        <svg onClick={() => searchTimeline.current.reverse()} data-testid="geist-icon" height="16" strokeLinejoin="round" viewBox="0 0 16 16" width="16" style={{ color: "currentcolor" }}>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8ZM16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.5 11.5607L6.03033 11.0303L8 9.06066L9.96967 11.0303L10.5 11.5607L11.5607 10.5L11.0303 9.96967L9.06066 8L11.0303 6.03033L11.5607 5.5L10.5 4.43934L9.96967 4.96967L8 6.93934L6.03033 4.96967L5.5 4.43934L4.43934 5.5L4.96967 6.03033L6.93934 8L4.96967 9.96967L4.43934 10.5L5.5 11.5607Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div className="results-search">
+                        <div className="results-success">
+                            <div className="result1">
+                                {query === "" ? null : filteredResults.map((item, index) => (
+                                    <Link
+                                        to={item.path}
+                                        key={index}
+                                        className="search-result-item"
+                                        onClick={() => searchTimeline.current.reverse()}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                        {query === "" && (
+                            <div className="default-empty-search">
+                                <div className="wrap-fasd">
+                                    <span>I&apos;m looking for..</span>
+                                    <div className="items-search">
+                                        <div className="item-search"><p>Bottom Bar</p></div>
+                                        <div className="item-search"><p>Link Text</p></div>
+                                        <div className="item-search"><p>Comic Button</p></div>
+                                    </div>
+                                </div>
+                                <div className="links-search">
+                                    <Link to={"/terms"}>Terms & Conditions</Link>
+                                    <Link to={"/redirect/github"}>GitHub</Link>
+                                </div>
+                            </div>
+                        )}
+                        {query !== "" && filteredResults.length === 0 && (
+                            <div className="not-found-search">
+                                <span>No results found for <strong>{query}</strong></span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
             <div className="main-sidebar">
                 <div className="logoTop">
                     <img src={logo} alt="Logo" />
-                    {/* Navbar Desktop */}
                     <div className="nav-items">
-                        <div className="search">
+                        <div onClick={() => { searchTimeline.current.play(); }} className="search">
                             <button>Search</button>
                             <img src={searchIcon} alt="Search Icon" />
                             <kbd>CTRL + K</kbd>
@@ -102,15 +208,12 @@ export default function Sidebar() {
                             </button>
                         </div>
                     </div>
-                    {/* Menu Close Button */}
                     <div onClick={closeMenu} className="close">
                         <img src={closeIcon} alt="Close" />
                     </div>
                 </div>
 
-                {/* Main Navigation Items (Sidebar) */}
-
-                <div className="main">
+                <div data-lenis-prevent className="main">
                     <div className="sections">
                         {navItems.map((section, index) => (
                             <div className={`category ${section.className || "category"}`} key={index}>
@@ -121,7 +224,7 @@ export default function Sidebar() {
                                             key={idx}
                                             className={`item ${location.pathname === item.path ? "active" : ""}`}
                                             to={item.path}
-                                            onClick={isMobile ? closeMenu : null} // Close menu on item click
+                                            onClick={isMobile ? closeMenu : null}
                                         >
                                             {item.name}
                                         </Link>
