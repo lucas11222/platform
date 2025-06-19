@@ -236,11 +236,91 @@ The underline animation creates a sophisticated interaction pattern:
 
 ---
 
+## Full Working Code
+
+```codegroup
+// LinkText.jsx
+import gsap from "gsap";
+import React, { useRef } from "react";
+import "./LinkText.css";
+
+
+export default function LinkText({ text = "Hover Me!", to }) {
+    const underLineRef = useRef(null);
+
+    const handleMouseEnter = () => {
+        gsap.fromTo(underLineRef.current, {
+            x: "-101%", // Smooth animation using transformX
+
+        }, {
+            x: "0",
+            duration: 0.6,
+            ease: "power3.out",
+            overwrite: "auto",
+        });
+    };
+
+    const handleMouseLeave = () => {
+        gsap.to(underLineRef.current, {
+            x: "101%", // Reset animation using transformX
+            duration: 0.6,
+            ease: "power3.out",
+            overwrite: "auto",
+            onComplete: () => {
+                gsap.set(underLineRef.current, { x: "-101%" })
+            }
+        });
+    };
+
+    return (
+        <>
+            {/* The Actual Code */}
+            <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="linkText"
+            >
+                <a href={to}>{text}</a>
+                <div ref={underLineRef} className="underLine"></div>
+            </div>
+        </>
+    );
+}
+
+
+// LinkText.css
+.linkText {
+  font-size: 33px;
+  font-weight: 500;
+  font-family: "Satoshi";
+  display: inline-flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.linkText a {
+  color: black;
+  text-decoration: none;
+}
+
+.underLine {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+  position: relative;
+  transform: translateX(-101%);
+  will-change: transform;
+}
+
+```
+
+---
+
 ## Do you think something is missing in this tutorial?
 
 Send me an email at [mohit@craftedbylunar.xyz](mailto:mohit@craftedbylunar.xyz)
-
----
 
 ## And with that, You did it!
 

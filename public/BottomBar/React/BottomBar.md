@@ -367,6 +367,258 @@ This foundation supports numerous enhancements: additional animation easing func
 
 ---
 
+## Final Working Code
+
+```codegroup
+
+// BottomNav.jsx
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import "./BottomNav.css";
+
+export default function BottomNav({ items }) {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const itemRefs = useRef([]);
+    const itemsContainerRef = useRef(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+    useEffect(() => {
+        const activeItem = itemRefs.current[activeIndex];
+        const itemsContainer = itemsContainerRef.current;
+
+        if (activeItem && itemsContainer) {
+            const { offsetWidth: width, offsetLeft: left } = activeItem;
+
+            gsap.to(".lunarNavActiveSelector", {
+                width,
+                left,
+                duration: 0.4,
+                ease: "power2.out",
+            });
+        }
+    }, [activeIndex]);
+
+    const handleMenuClick = () => {
+        setIsMenuOpen((prev) => !prev);
+    };
+
+    const handleItemMouseIn = (index) => {
+        const currentItem = itemRefs.current[index];
+
+        if (currentItem) {
+            const { offsetWidth: width, offsetLeft: left } = currentItem;
+
+            gsap.to(".lunarNavHoverSelector", {
+                opacity: 1,
+                width: width + 30,
+                left: left - 15,
+                duration: 0.4,
+                ease: "power2.out",
+                overwrite: "auto",
+            });
+        }
+    };
+
+    const handleItemMouseLeave = () => {
+        gsap.to(".lunarNavHoverSelector", {
+            opacity: 0,
+            duration: 0.2,
+            ease: "power2.out",
+            overwrite: "auto",
+        });
+    };
+
+    const handleItemClick = (index) => {
+        setActiveIndex(index);
+    };
+
+    return (
+        <div className="lunarNavBarWrapper" onMouseLeave={handleItemMouseLeave}>
+            {/* Logo Section */}
+            <div className="lunarNavLogo">
+                <img
+                    src="https://ywerf4fo8udqtrne.public.blob.vercel-storage.com/lunarNewTransparent-Cb4HhH8q32P1r4iX1bqmdSsfOioHyt.png"
+                    alt="Logo"
+                />
+            </div>
+
+            {/* Menu Button */}
+            <div className="lunarNavMenuButtonWrapper">
+                <div onClick={handleMenuClick} className="lunarNavMenuButton">
+                    <div className={isMenuOpen ? "lunarNavLineOne" : "lunarNavLineOne active"}></div>
+                    <div className={isMenuOpen ? "lunarNavLineTwo" : "lunarNavLineTwo active"}></div>
+                </div>
+            </div>
+
+            {/* Navigation Items */}
+            <div className="lunarNavItemsContainer" ref={itemsContainerRef}>
+                <div className="lunarNavActiveSelector">
+                    <div className="lunarNavDot"></div>
+                </div>
+                <div className="lunarNavHoverSelector"></div>
+                {items.map((item, index) => (
+                    <div
+                        key={index}
+                        ref={(el) => (itemRefs.current[index] = el)}
+                        className={`lunarNavItem ${activeIndex === index ? "active" : ""}`}
+                        onMouseEnter={() => handleItemMouseIn(index)}
+                        onClick={() => handleItemClick(index)}
+                    >
+                        <h1>{item}</h1>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+
+// BottomNav.css
+.lunarNavBarWrapper {
+  position: relative;
+  display: inline-flex;
+  background-color: rgb(252, 244, 103);
+  border-radius: 50px;
+  padding: 5px 45px 5px 5px;
+  align-items: center;
+  gap: 20px;
+  color: black;
+}
+
+.lunarNavItemsContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  gap: 50px;
+  opacity: 1;
+}
+
+.lunarNavHoverSelector {
+  position: absolute;
+  width: var(--selector-width);
+  height: 95%;
+  background: rgba(185, 176, 2, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0px 20px;
+  opacity: 0;
+}
+
+.lunarNavActiveSelector {
+  position: absolute;
+  width: var(--selector-width);
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  left: 0;
+}
+
+.lunarNavDot {
+  height: 4px;
+  width: 4px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.lunarNavItem h1 {
+  font-size: 20px;
+  font-family: "Satoshi";
+  font-weight: 500;
+}
+
+.lunarNavItem {
+  cursor: pointer;
+  position: relative;
+}
+
+.lunarNavLogo {
+  height: 50px;
+  background-color: #ffffff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+.lunarNavLogo img {
+  height: 25px;
+  padding: 0px 10px;
+  object-fit: cover;
+}
+
+.lunarNavMenuButton {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+  transition: all 0.2s ease-in-out;
+}
+
+.lunarNavMenuButtonWrapper {
+  width: 100%;
+  display: none;
+  justify-content: flex-end;
+}
+
+.lunarNavLineOne,
+.lunarNavLineTwo {
+  height: 2px;
+  width: 85%;
+  background-color: black;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.lunarNavLineOne.active {
+  transform: rotate(45deg);
+}
+
+.lunarNavLineTwo.active {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -4px;
+}
+
+.lunarNavMenuButton:active {
+  scale: 0.9;
+}
+
+@media (max-width: 590px) {
+  .lunarNavMenuButtonWrapper {
+    display: flex;
+  }
+
+  .lunarNavItemsContainer {
+    display: none;
+  }
+
+  .lunarNavMenuButton {
+    display: flex;
+  }
+
+  .lunarNavBarWrapper {
+    padding: 5px 10px 5px 5px;
+    gap: 5px;
+  }
+}
+
+
+```
+
+---
+
 ## Do you think something is missing in this tutorial?
 
 Send me an email at [mohit@craftedbylunar.xyz](mailto:mohit@craftedbylunar.xyz)

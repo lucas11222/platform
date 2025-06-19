@@ -12,6 +12,7 @@
   max-width: 100%;
   overflow-x: auto;
   font-family: "Fira Code", monospace;
+  position: relative;
 }
 
 .code-block pre {
@@ -82,6 +83,54 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.copy-code-btn {
+  padding: 15px;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  background-color: var(--blackDark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--borderColorBlack);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#checkMark {
+  position: absolute;
+  opacity: 0;
+}
+
+.codegroup {
+  margin-bottom: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tab {
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: #1e1e1e;
+  color: #ccc;
+  font-family: "Geist", sans-serif;
+}
+
+.tab.active {
+  background: black;
+  color: white;
 }
 
 @media (max-width: 568px) {
