@@ -29,34 +29,6 @@ body {
   }
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-label,
-strong,
-em,
-b,
-i,
-small,
-sub,
-sup,
-a,
-blockquote,
-code,
-mark,
-q,
-abbr,
-cite,
-time,
-u {
-  vertical-align: top;
-}
-
 :root {
   --blackDark: #1a1a1a;
   --black: #303030;

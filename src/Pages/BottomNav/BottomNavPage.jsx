@@ -1,23 +1,32 @@
 import "./BottomNavPage.css";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MDConverter from "../../Components/MDConverter/MDConverter";
-import { useEffect } from "react";
 import ComponentPreview from "../../Components/ComponentPreview/ComponentPreview";
 import BottomNav from "../../Components/BottomNav";
 
 export default function StartingPage() {
-    const [markdownContent, setMarkdownContent] = useState(``);
-    const items = ["Home", "About", "Contact", "Work"]
+    const [markdownContent, setMarkdownContent] = useState("");
 
-    useEffect(() => {
-        fetch('/BottomBar.md')
-            .then(response => response.text())
-            .then(text => {
-                setMarkdownContent(text);
-            })
-            .catch(error => console.error("Error loading markdown file:", error));
+    const items = ["Home", "About", "Contact", "Work"];
+
+    const loadMarkdown = useCallback((path) => {
+        fetch(path)
+            .then((res) => res.text())
+            .then(setMarkdownContent)
+            .catch((err) => console.error("Error loading markdown:", err));
     }, []);
 
+    useEffect(() => {
+        loadMarkdown("/BottomBar/React/BottomBar.md");
+    }, [loadMarkdown]);
+
+    const handleLanguageChange = (version) => {
+        if (version === "react") {
+            loadMarkdown("/BottomBar/React/BottomBar.md");
+        } else if (version === "html") {
+            loadMarkdown("/BottomBar/Vanilla/BottomBarVanilla.md");
+        }
+    };
 
     return (
         <div className="main-bottombar-page">
@@ -27,10 +36,10 @@ export default function StartingPage() {
                     componentProps={{ items }}
                     title="Bottom Nav"
                     stack="gsap"
+                    onLanguageChange={handleLanguageChange}
                 />
                 <hr />
-                <MDConverter markdown={markdownContent}></MDConverter>
-
+                <MDConverter markdown={markdownContent} />
             </div>
         </div>
     );

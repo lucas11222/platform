@@ -24,8 +24,15 @@ function ScrollToTop() {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
+    // Check if we're on an app route (no Lenis)
+    if (location.pathname.startsWith("/app")) {
+      window.scrollTo(0, 0);
+    }
+    // For non-app routes, Lenis will handle smooth scrolling to top
+    // but we still need to trigger it
+    else {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname]);
 
   return null;
@@ -35,7 +42,6 @@ function ExternalRedirect({ url }) {
   useEffect(() => {
     window.location.href = url;
   }, [url]);
-
   return <p>Redirecting...</p>;
 }
 
@@ -49,7 +55,6 @@ function ConditionalLenisWrapper({ children }) {
 
   return (
     <ReactLenis root options={{ touchSync: true }}>
-      <ScrollToTop />
       {children}
     </ReactLenis>
   );
@@ -58,6 +63,7 @@ function ConditionalLenisWrapper({ children }) {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ConditionalLenisWrapper>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
