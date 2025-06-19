@@ -24,6 +24,11 @@ export const navItems = [
         className: "nav-igation",
         links: [{ name: "Bottom Bar", path: "/app/bottom-nav" }],
     },
+    {
+        category: "Buttons",
+        className: "category",
+        links: [{ name: "Comic Button", path: "/app/comic-button" }],
+    },
 ];
 
 export default function Sidebar() {
