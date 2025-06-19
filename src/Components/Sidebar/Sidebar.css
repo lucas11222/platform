@@ -449,6 +449,19 @@
   cursor: pointer;
 }
 
+.searchIcon {
+  width: 35px;
+  position: absolute;
+  right: 80px;
+  margin-top: 3px;
+  color: white;
+}
+
+.searchIcon img {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(1%) saturate(4349%)
+    hue-rotate(180deg) brightness(121%) contrast(86%);
+}
+
 /* Media Queries */
 
 @media (max-width: 1172px) {

@@ -137,6 +137,9 @@ export default function Sidebar() {
                 <div className="logo-mobile">
                     <img src={logo} alt="Logo" />
                 </div>
+                <div onClick={() => { searchTimeline.current.play(); }} className="searchIcon">
+                    <img src={searchIcon} alt="" />
+                </div>
                 <div onClick={openMenu} className="menuIcon">
                     <img src={menuIcon} alt="Menu" />
                 </div>
