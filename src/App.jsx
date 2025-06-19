@@ -20,20 +20,13 @@ const BotomNavPage = lazy(() => import("./Pages/BottomNav/BottomNavPage"));
 const NotFound = lazy(() => import("./Pages/404/404"));
 const Terms = lazy(() => import("./Pages/Terms/Terms"));
 
-function ScrollToTopAndRefreshLenis() {
+function ScrollToTop() {
   const location = useLocation();
-  const lenis = useLenis();
 
   useEffect(() => {
-    if (!lenis) return;
+    window.scrollTo(0, 0);
 
-    requestAnimationFrame(() => {
-      lenis.scrollTo(0, { immediate: true });
-      setTimeout(() => {
-        lenis.resize();
-      }, 200);
-    });
-  }, [location.pathname, lenis]);
+  }, [location.pathname]);
 
   return null;
 }
@@ -56,7 +49,7 @@ function ConditionalLenisWrapper({ children }) {
 
   return (
     <ReactLenis root options={{ touchSync: true }}>
-      <ScrollToTopAndRefreshLenis />
+      <ScrollToTop />
       {children}
     </ReactLenis>
   );
