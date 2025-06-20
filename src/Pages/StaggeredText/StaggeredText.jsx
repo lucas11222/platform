@@ -26,7 +26,7 @@ export default function StartingPage() {
         if (version === "react") {
             loadMarkdown("/StaggeredText/React/StaggeredText.md");
         } else if (version === "html") {
-            loadMarkdown("/StaggeredText/Vanilla/StaggeredText.md");
+            loadMarkdown("/StaggeredText/Vanilla/StaggeredTextVanilla.md");
         }
     };
 
