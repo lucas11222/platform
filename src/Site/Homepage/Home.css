@@ -22,8 +22,51 @@
   width: 100%;
 }
 
+.main-notice {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 20;
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--borderColorWhite);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  font-family: "Geist";
+  opacity: 0.8;
+}
+
+.main-notice h1 {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.main-notice a {
+  color: #3f3f3f;
+}
+
+.main-notice a:hover {
+  text-decoration: none;
+}
+
+.main-notice span {
+  font-size: 12px;
+  max-width: 300px;
+  line-height: 1.1;
+}
+
 @media (max-width: 520px) {
   .main-home-page {
     min-height: 800px;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-notice {
+    scale: 0.7;
+    right: -40px;
   }
 }

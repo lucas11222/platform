@@ -44,7 +44,7 @@ function ExternalRedirect({ url }) {
   useEffect(() => {
     window.location.href = url;
   }, [url]);
-  return <p>Redirecting...</p>;
+  return <p style={{ color: "#DFDFDF", fontFamily: "Satoshi" }}>Redirecting...</p>;
 }
 
 function ConditionalLenisWrapper({ children }) {

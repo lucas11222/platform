@@ -1,6 +1,6 @@
 import React from "react"
 import "./TestingSpace.css"
-import ComicButton from "../../../ComponentCreation/3D Comic Button/3DComicButton"
+import ComicButton from "../../Components/3DComicButton"
 
 
 export default function TestingSpace() {

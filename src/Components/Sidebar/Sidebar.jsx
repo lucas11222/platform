@@ -200,9 +200,18 @@ export default function Sidebar() {
                                 <div className="wrap-fasd">
                                     <span>I&apos;m looking for..</span>
                                     <div className="items-search">
-                                        <div className="item-search"><p>Bottom Bar</p></div>
-                                        <div className="item-search"><p>Link Text</p></div>
-                                        <div className="item-search"><p>Comic Button</p></div>
+                                        <div onClick={() => {
+                                            navigate("/app/bottom-bar");
+                                            searchTimeline.current.reverse();
+                                        }} className="item-search"><p>Bottom Bar</p></div>
+                                        <div onClick={() => {
+                                            navigate("/app/link-text");
+                                            searchTimeline.current.reverse();
+                                        }} className="item-search"><p>Link Text</p></div>
+                                        <div onClick={() => {
+                                            navigate("/app/comic-button");
+                                            searchTimeline.current.reverse();
+                                        }} className="item-search"><p>Comic Button</p></div>
                                     </div>
                                 </div>
                                 <div className="links-search">
@@ -231,7 +240,7 @@ export default function Sidebar() {
                             <kbd>CTRL + K</kbd>
                         </div>
                         <div className="star-github">
-                            <button id="buttonStar">
+                            <button onClick={() => { navigate("/redirect/github") }} id="buttonStar">
                                 <img src={githubIcon} alt="GitHub" />Star on GitHub
                             </button>
                         </div>
