@@ -309,9 +309,9 @@ export default function TextStagger({ text, textColor, duplicateText = text }) {
 
 ---
 
-## Want to Improve or Report a Bug?
+## Do you think something is missing in this tutorial?
 
-Email me at [mohit@craftedbylunar.xyz](mailto:mohit@craftedbylunar.xyz)
+Send me an email at [mohit@craftedbylunar.xyz](mailto:mohit@craftedbylunar.xyz)
 
 ---
 
