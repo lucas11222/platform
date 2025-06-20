@@ -17,7 +17,7 @@ export const navItems = [
     {
         category: "Text Animations",
         className: "category",
-        links: [{ name: "Link Text", path: "/app/link-text" }],
+        links: [{ name: "Link Text", path: "/app/link-text" }, { name: "Stagger Text", path: "/app/stagger-text" }],
     },
     {
         category: "Navigation",
@@ -201,7 +201,7 @@ export default function Sidebar() {
                                     <span>I&apos;m looking for..</span>
                                     <div className="items-search">
                                         <div onClick={() => {
-                                            navigate("/app/bottom-bar");
+                                            navigate("/app/bottom-nav");
                                             searchTimeline.current.reverse();
                                         }} className="item-search"><p>Bottom Bar</p></div>
                                         <div onClick={() => {

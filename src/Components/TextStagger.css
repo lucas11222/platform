@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Ligsans";
+  src: url("https://ywerf4fo8udqtrne.public.blob.vercel-storage.com/LigaSans-Bold-fc2ZTym6FP7foHgBmaDmNPCpEYCNwp.otf");
+}
+
+.resdsx {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  font-family: "Nohemi", sans-serif;
+  font-size: 3vw;
+  line-height: 1;
+  height: 1em;
+  cursor: pointer;
+  width: fit-content;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text,
+.text-duplicate {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.char,
+.char-dup {
+  display: inline-block;
+}

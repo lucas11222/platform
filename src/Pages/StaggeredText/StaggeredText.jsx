@@ -1,15 +1,15 @@
-import "./LinkTextPage.css";
+import "./StaggeredText.css";
 import React, { useState } from "react";
 import MDConverter from "../../Components/MDConverter/MDConverter";
 import { useEffect } from "react";
 import ComponentPreview from "../../Components/ComponentPreview/ComponentPreview";
-import LinkText from "../../Components/LinkText";
+import TextStagger from "../../Components/TextStagger";
 import { useCallback } from "react";
 
 export default function StartingPage() {
     const [markdownContent, setMarkdownContent] = useState(``);
-    const text = "Hover me!"
-    const to = "#"
+    const text = "HOVER ME!"
+    const textColor = "black"
 
     const loadMarkdown = useCallback((path) => {
         fetch(path)
@@ -19,23 +19,23 @@ export default function StartingPage() {
     }, []);
 
     useEffect(() => {
-        loadMarkdown("/LinkText/React/LinkText.md");
+        loadMarkdown("/StaggeredText/React/StaggeredText.md");
     }, [loadMarkdown]);
 
     const handleLanguageChange = (version) => {
         if (version === "react") {
-            loadMarkdown("/LinkText/React/LinkText.md");
+            loadMarkdown("/StaggeredText/React/StaggeredText.md");
         } else if (version === "html") {
-            loadMarkdown("/LinkText/Vanilla/LinkTextVanilla.md");
+            loadMarkdown("/StaggeredText/Vanilla/StaggeredText.md");
         }
     };
 
 
     return (
-        <div className="main-linkText-page">
-            <div className="linkText-page">
+        <div className="main-staggerText-page">
+            <div className="staggerText-page">
                 <ComponentPreview
-                    onLanguageChange={handleLanguageChange} component={LinkText} componentProps={{ text, to }} title={"Link Text"} stack={"gsap"}></ComponentPreview>
+                    onLanguageChange={handleLanguageChange} component={TextStagger} componentProps={{ text, textColor }} title={"Stagger Text"} stack={"gsap"}></ComponentPreview>
                 <hr />
                 <MDConverter markdown={markdownContent}></MDConverter>
 
