@@ -14,13 +14,6 @@
   transform: scale(0.97);
 }
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-  height: 20px;
-  overflow: hidden;
-}
-
 @media (max-width: 1000px) {
   .btn {
     padding: 8px 15px;

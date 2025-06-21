@@ -14,9 +14,7 @@ export default function ButtonAnimated({ onClick, text, background, textColor, w
             style={{ width: width, color: textColor, background: background, border: `1px solid ${borderColor}` }}
             className="btn"
         >
-            <div className="wrap">
-                <span>{text}</span>
-            </div>
-        </button>
+            <span>{text}</span>
+        </button >
     );
 }
