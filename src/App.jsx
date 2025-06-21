@@ -19,10 +19,12 @@ const StartingPage = lazy(() => import("./Pages/StartingPage/StartingPage"));
 const LinkTextPage = lazy(() => import("./Pages/LinkText/LinkTextPage"));
 const BotomNavPage = lazy(() => import("./Pages/BottomNav/BottomNavPage"));
 const ComicButton = lazy(() => import("./Pages/ComicButton/ComicButton"));
+const ComicAvatar = lazy(() => import("./Pages/ComicAvatar/ComicAvatar"));
 const StaggeredText = lazy(() => import("./Pages/StaggeredText/StaggeredText"));
 const TextSlideBtnPage = lazy(() => import("./Pages/TextSlide/TextSlideBtnPage"));
 const NotFound = lazy(() => import("./Pages/404/404"));
 const Terms = lazy(() => import("./Pages/Terms/Terms"));
+
 
 function ScrollToTop() {
   const location = useLocation();
@@ -86,6 +88,7 @@ function App() {
               <Route path="link-text" element={<LinkTextPage />} />
               <Route path="bottom-nav" element={<BotomNavPage />} />
               <Route path="comic-button" element={<ComicButton />} />
+              <Route path="comic-avatar" element={<ComicAvatar   />} />
               <Route path="stagger-text" element={<StaggeredText />} />
               <Route path="text-slide-btn" element={<TextSlideBtnPage />} />
               <Route path="terms" element={<Terms />} />

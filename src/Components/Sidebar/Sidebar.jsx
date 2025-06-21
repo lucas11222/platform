@@ -30,6 +30,11 @@ export const navItems = [
         className: "category",
         links: [{ name: "Comic Button", path: "/app/comic-button" }, { name: "Text Slide Button", path: "/app/text-slide-btn" }],
     },
+    {
+        category: "Avatars",
+        className: "category",
+        links: [{ name: "Comic Avatar", path: "/app/comic-avatar"}],
+    },
 ];
 
 export default function Sidebar() {
