@@ -1,0 +1,32 @@
+.btn-slide {
+  width: fit-content;
+}
+
+.btn-slide button {
+  font-family: "Geist";
+  font-size: 20px;
+  padding: 10px 30px;
+  position: relative;
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.texts-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 1.25em;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bg-slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}

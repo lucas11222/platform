@@ -272,6 +272,7 @@
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   position: relative;
   opacity: 0;
+  transform: scale(0.9);
 }
 
 .input-search {

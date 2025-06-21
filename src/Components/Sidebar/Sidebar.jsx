@@ -7,6 +7,7 @@ import menuIcon from "../../assets/menu.svg";
 import githubIcon from "../../assets/github.svg";
 import searchIcon from "../../assets/search-1.svg";
 import gsap from "gsap";
+import { scale, transform } from "framer-motion";
 
 export const navItems = [
     {
@@ -27,7 +28,7 @@ export const navItems = [
     {
         category: "Buttons",
         className: "category",
-        links: [{ name: "Comic Button", path: "/app/comic-button" }],
+        links: [{ name: "Comic Button", path: "/app/comic-button" }, { name: "Text Slide Button", path: "/app/text-slide-btn" }],
     },
 ];
 
@@ -85,6 +86,7 @@ export default function Sidebar() {
             pointerEvents: "auto",
         });
         searchTimeline.current.to(".search-box", {
+            transform: "scale(1)",
             opacity: 1,
             duration: 0.2,
             ease: "power2",
